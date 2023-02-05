@@ -144,12 +144,31 @@ body{
 
 @media only screen and (max-width:1024px){
   .centered-container{
-      width: 90%;
+    width: 90%;
   }
 }
 
 @media only screen and (max-width:600px){
+  .centered-container{
+    display: block;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  .centered-container >div{
+    height: auto;
+  }
+  
+  .main{
+    padding: 0;
+    height: auto;
+  }
 
+  .side-bar{
+  background-image: url('../images/bg-sidebar-mobile.svg');
+  font-size: 20px;
+
+  }
 }
 
 @media only screen and (max-width:500px){
