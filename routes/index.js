@@ -20,8 +20,8 @@ router.get("/", function (req, res) {
     .catch(console.error)
     .finally(()=>{
       console.log(data)
-      res.render("index", {
-        ipAddress: "There was an error getting your ip address.",
+      res.render("test", {
+        ipAddress: ipAddress || "There was an error getting your ip address.",
         data: data || "Error getting ip details",
       });
 

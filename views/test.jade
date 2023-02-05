@@ -1,0 +1,83 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Home
+  // CSS AND FONTS
+  script(src='https://kit.fontawesome.com/2ed1e52188.js' crossorigin='anonymous')
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  link(href='https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='stylesheets/style.css')
+header
+main
+  .main
+    .centered-container
+      .side-bar
+        p.desc
+          | Your ip Address:
+        p.details
+          span#ipaddr(title='')=ipAddress
+          i#copybtn.fa-regular.fa-copy
+          span#tooltiptext
+        p.desc
+          | Your city:
+        p.details
+          =data.city || "Not detected"
+        p.desc
+          | Your country:
+        p.details
+          =data.country || "Not detected"
+        p.desc
+          | Your continent:
+        p.details
+          =data.continent || "Not detected"
+        p.desc
+          | Your longitude:
+        p.details
+          =data.longitude || "Not detected"
+        p.desc
+          | Your latitude:
+        p.details
+          =data.latitude || "Not detected"
+        button.btm-btn
+          | Refresh ip details
+      div
+        h1
+          | Get a secure VPN
+        p
+          | Please pick a registration option!
+        .price-container
+          .price-div
+            .circle
+              i.fa-solid.fa-money-bill
+            p
+              | $100
+          .price-div
+            .circle
+              i.fa-solid.fa-money-bill
+            p
+              | $10
+          .price-div
+            .circle
+              i.fa-solid.fa-money-bill
+            p
+              | $0
+        .plan-type
+          p Monthly
+footer
+script.
+  const ipaddr = document.getElementById("ipaddr");
+  const copybtn = document.getElementById("copybtn")
+  const tooltiptext = document.getElementById("tooltiptext")
+  copybtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(ipaddr.textContent)
+  ipaddr.title = "copied"
+  tooltiptext.style.display="inline"
+  tooltiptext.textContent="copied"
+  setTimeout(()=>{
+  tooltiptext.textContent= ""
+  tooltiptext.style.display="none"
+  }, 3000)
+  });
