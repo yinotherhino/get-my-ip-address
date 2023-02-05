@@ -6,26 +6,29 @@ const { config } = require("dotenv");
 
 config();
 
-router.get("/", function (req, res) {
+router.get("/", (req, res)=> {
   let ipAddress = IP.address();
-  let data;
-  axios
-    .get(
-      `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.API_KEY}&ip_address=${ipAddress}`
-    )
-    .then(response => {
-      console.log(response.data)
-      data = response.data
-    })
-    .catch(console.error)
-    .finally(()=>{
-      console.log(data)
-      res.render("test", {
-        ipAddress: ipAddress || "There was an error getting your ip address.",
-        data: data || "Error getting ip details",
-      });
+  let [data, latitude, longitude]= [,,,];
+  axios.get(`https://ipinfo.io/${ipAddress}?token=${process.env.API_KEY}`)
+  .then(response=>{
+    data= response.data
+    console.log(response.data)
+    const loc = data.loc.split(",")
+    [latitude, longitude] = loc || [0,0]
+  })
+  .catch(console.error)
+  .finally(()=>{
+    res.render("test", {
+      ipAddress: ipAddress || "There was an error getting your ip address.",
+      data: data || "Error getting ip details",
+      latitude,
+      longitude,
+      country:data.country,
+      region:data.region,
+      timezone:data.timezone
+    });
 
-    })
+      })
 });
 
 module.exports = router;

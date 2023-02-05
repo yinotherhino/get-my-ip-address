@@ -26,21 +26,29 @@ main
         p.details
           =data.city || "Not detected"
         p.desc
+          | Your Region:
+        p.details
+          =region || "Not detected"
+        p.desc
           | Your country:
         p.details
-          =data.country || "Not detected"
+          =country || "Not detected"
         p.desc
           | Your continent:
         p.details
-          =data.continent || "Not detected"
+          =continent || "Not detected"
         p.desc
-          | Your longitude:
+          | Your timezone:
         p.details
-          =data.longitude || "Not detected"
-        p.desc
-          | Your latitude:
-        p.details
-          =data.latitude || "Not detected"
+          =timezone || "Not detected"
+        //- p.desc
+        //-   | Your longitude:
+        //- p.details
+        //-   =longitude || "Not detected"
+        //- p.desc
+        //-   | Your latitude:
+        //- p.details
+        //-   =latitude || "Not detected"
         button.btm-btn
           | Refresh ip details
       div
@@ -71,6 +79,7 @@ script.
   const ipaddr = document.getElementById("ipaddr");
   const copybtn = document.getElementById("copybtn")
   const tooltiptext = document.getElementById("tooltiptext")
+  const btmBtn =  document.getElementById("btm-btn")
   copybtn.addEventListener('click', () => {
   navigator.clipboard.writeText(ipaddr.textContent)
   ipaddr.title = "copied"
@@ -80,4 +89,9 @@ script.
   tooltiptext.textContent= ""
   tooltiptext.style.display="none"
   }, 3000)
+
+  btmBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    location.reload();
+  })
   });

@@ -136,6 +136,9 @@ body{
 
 }
 
+.btm-btn{
+  cursor: pointer;
+}
 @media only screen and (max-width:1200px){
   .centered-container{
       width: 80%;
@@ -172,6 +175,7 @@ body{
     margin-right: 0;
   }
 }
+
 
 @media only screen and (max-width:500px){
 
