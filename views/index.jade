@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 Get My Ip Address 
+  br
+
+  h3 ip Address: 
+     =ipAddress
+
+  h3 ip data:
+  p City:
+    =data.city || "Not detected"
+  p Region:
+    =data.region || "Not detected"
+  p Country:
+    =data.country || "Not detected"
+  p Cotinent:
+    =data.continent || "Not detected"
+  p Longitude:
+    =data.longitude || "Not detected"
+  p Latitude:
+    =data.latitude || "Not detected"
+  -if(data.security.is_vpn===true){
+    p  VPN detected
+  -}
+  -else{
+    p No VPN detected
+  -}
+  
