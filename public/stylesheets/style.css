@@ -158,7 +158,9 @@ body{
   .centered-container >div{
     height: auto;
   }
-  
+  body{
+    background-color: var(--white);
+  }
   .main{
     padding: 0;
     height: auto;
@@ -167,7 +169,7 @@ body{
   .side-bar{
   background-image: url('../images/bg-sidebar-mobile.svg');
   font-size: 20px;
-
+    margin-right: 0;
   }
 }
 
